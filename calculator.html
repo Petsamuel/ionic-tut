@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>CGPA Calculator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="./src/style.css" />
+    <link rel="stylesheet" href="./src/output.css" />
+</head>
+
+<body >
+    <ion-app>
+        <!-- Semester Selection -->
+        <div class="flex lg:justify-center  my-auto lg:gap-10 lg:items-center flex-col p-5">
+        
+             <ion-tabs>
+            <!-- Home Tab Content -->
+            <ion-tab tab="home">
+                <ion-content>
+                    <h1>Home Content</h1>
+                </ion-content>
+            </ion-tab>
+
+            <!-- Calculate Tab Content -->
+            <ion-tab tab="calculate" class="">
+                <ion-content class="flex lg:justify-center  my-auto lg:gap-10 lg:items-center flex-col " >
+                <section class="flex flex-col lg:flex-row  h-full justify-evenly pt-5 lg:items-center">
+                    <div class="flex">
+                        <ion-col size="24" class=" w-full">
+                            <ion-text color="primary">
+                                <h1 class="text-2xl font-bold font-['Poppins']">CGPA Calculator</h1>
+                            </ion-text> 
+                            <!-- form -->
+                                <form [formGroup]="cgpa-fcal-form" (ngSubmit)="onSubmit()">
+                                   
+                                
+
+                                    <ion-item class=" flex flex-col gap-3">
+                                        <ion-label position="floating" class="py-4">E-Mail <ion-text color="danger">*</ion-text></ion-label>
+                                        <ion-input required formControlName="email" type="text" class="p-2"></ion-input>
+                                    </ion-item>
+                                    <ion-item>
+                                       <div class="mt-2">
+                                         <ion-label position="floating">Password <ion-text color="danger">*</ion-text></ion-label>
+                                       </div>
+                                        <ion-input required formControlName="password" type="text"></ion-input>
+                                    </ion-item>
+                                    <div class="my-2">
+                                        <ion-button class="" block color="primary" type="submit" [disabled]="loginForm.invalid">
+                                        Login
+                                    </ion-button>
+                                    </div>
+                                </form>
+                        </ion-col>
+                        
+                    </div>
+                    <div>
+                        <ion-col size="12">
+                        <img src="./src/3d.png" alt="alt" class="h-auto w-96" draggable="false"/>
+                        </ion-col>
+                    </div>
+                    
+                </section>
+
+                    
+                
+                </ion-content>
+            </ion-tab>
+
+            <!-- History Tab Content -->
+            <ion-tab tab="history">
+                <ion-content>
+                    <h1>History Content</h1>
+                </ion-content>
+            </ion-tab>
+
+            <!-- Profile Tab Content -->
+            <ion-tab tab="profile">
+                <ion-content>
+                    <h1>Profile Content</h1>
+                </ion-content>
+            </ion-tab>
+
+            <!-- Floating Tab Bar -->
+            <ion-tab-bar slot="bottom"
+                class="floating-tabs sticky bottom-2 p-2 flex items-center justify-between bg-white shadow-4xl text-gray-400 rounded-[10em] lg:w-[40%] w-[50%] mx-auto backdrop-blur-lg">
+                <ion-tab-button tab="home">
+                    <ion-icon name="home" class="lg:text-6xl text-2xl"></ion-icon>
+                    <div class="tooltip">Home</div>
+                </ion-tab-button>
+                <ion-tab-button tab="calculate" id="nav-calculator">
+                    <ion-icon name="calculator" class="lg:text-6xl text-2xl"></ion-icon>
+                    <div class="tooltip">Calculate</div>
+                </ion-tab-button>
+                <ion-tab-button tab="history" id="nav-history">
+                    <ion-icon name="time" class="lg:text-6xl text-2xl"></ion-icon>
+                    <div class="tooltip">History</div>
+                </ion-tab-button>
+                <ion-tab-button tab="profile" id="nav-profile">
+                    <ion-icon name="person" class="lg:text-6xl text-2xl"></ion-icon>
+                    <div class="tooltip">Profile</div>
+                </ion-tab-button>
+            </ion-tab-bar>
+        </ion-tabs>
+    </ion-app>
+</body>
+
+</html>

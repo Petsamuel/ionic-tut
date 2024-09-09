@@ -2,77 +2,159 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/script.js"></script>
-    <link rel="stylesheet" href="style.css" />
-    <head>
-      <!-- Ionic CSS -->
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"
-      />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>CGPA Calculator</title>
 
-      <!-- Ionic JS -->
-      <script
-        type="module"
-        src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"
-      ></script>
-      <script
-        nomodule
-        src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"
-      ></script>
-    </head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"
+    ></script>
+    <link rel="stylesheet" href="./src/output.css" />
+    <link rel="stylesheet" href="./src/style.css" />
 
-    <title>Document</title>
   </head>
   <body>
     <ion-app>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>CGPA Calculator</ion-title>
-          <ion-buttons slot="end">
-            <ion-button>Help</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <!-- end header -->
-      <ion-content class="ion-padding">
-        <div class="content-container">
-          <div id="welcome-screen" class="center-content">
-            <h2>Welcome to CGPA Calculator</h2>
-            <p>Click 'Start' to begin calculating your CGPA.</p>
-            <ion-button id="start-btn">Start</ion-button>
-          </div>
-
-          <div
-            id="semester-selection"
-            class="center-content"
-            style="display: none"
-          >
-            <ion-item>
-              <ion-label position="stacked">Number of Semesters</ion-label>
-              <ion-select id="semester-count">
-                <ion-select-option value="1">1</ion-select-option>
-                <ion-select-option value="2">2</ion-select-option>
-                <!-- Add more options as needed -->
-              </ion-select>
-            </ion-item>
-            <ion-button id="next-semester-btn" class="ion-margin-top"
-              >Next</ion-button
+      <ion-content>
+        <div
+          class="gradient-bg min-h-screen flex flex-col justify-center items-center"
+        >
+          <!-- Slide 1: Welcome -->
+          <div class="slide active" id="slide1">
+            <div
+              class="flex flex-col items-center justify-center h-screen text-center p-8"
             >
+              <ion-icon
+                name="school-outline"
+                class="text-6xl lg:text-[10em] mb-4 text-white cursor-pointer"
+              ></ion-icon>
+              <h1
+                class="lg:text-[10em] mb-4 text-white font-['Poppins'] font-extrabold text-5xl"
+              >
+                Welcome to CGPA Calculator
+              </h1>
+              <p class="text-lg mb-6 text-white font-['Montserrat']">
+                Simplify your academic journey with our easy-to-use tool.
+              </p>
+              <ion-button
+                expand="block"
+                onclick="nextSlide(1)"
+                class="w-full max-w-xs"
+                >Next</ion-button
+              >
+            </div>
           </div>
 
-          <div id="course-input" class="center-content" style="display: none">
-            <!-- This section will be dynamically populated with JavaScript -->
+          <!-- Slide 2: Features -->
+          <div class="slide" id="slide2">
+            <div
+              class="flex flex-col items-center justify-center h-screen text-center p-8"
+            >
+              <ion-icon
+                name="calculator-outline"
+                class="text-6xl lg:text-[10em] mb-4 text-white cursor-pointer"
+              ></ion-icon>
+              <h2
+                class="lg:text-[10em] mb-4 text-white font-['Poppins'] font-extrabold text-5xl"
+              >
+                Accurate Calculations
+              </h2>
+              <p class="text-lg mb-6 text-white font-['Montserrat']">
+                Get precise CGPA results based on your course grades and
+                credits.
+              </p>
+              <ion-button
+                expand="block"
+                onclick="nextSlide(2)"
+                class="w-full max-w-xs"
+                >Next</ion-button
+              >
+            </div>
           </div>
 
-          <div id="result" class="center-content" style="display: none">
-            <h2>Your CGPA</h2>
-            <p id="cgpa-result"></p>
-            <ion-button id="recalculate-btn">Recalculate</ion-button>
+          <!-- Slide 3: Track Progress -->
+          <div class="slide" id="slide3">
+            <div
+              class="flex flex-col items-center justify-center h-screen text-center p-8"
+            >
+              <ion-icon
+                name="trending-up-outline"
+                class="text-6xl lg:text-[10em] mb-4 text-white cursor-pointer"
+              ></ion-icon>
+              <h2
+                class="lg:text-[10em] mb-4 text-white font-['Poppins'] font-extrabold text-5xl"
+              >
+                Track Your Progress
+              </h2>
+              <p class="text-lg mb-6 text-white font-['Montserrat']">
+                Monitor your academic performance over time with our history
+                feature.
+              </p>
+              <ion-button
+                expand="block"
+                onclick="nextSlide(3)"
+                class="w-full max-w-xs"
+                >Next</ion-button
+              >
+            </div>
+          </div>
+
+          <!-- Slide 4: Get Started -->
+          <div class="slide" id="slide4">
+            <div
+              class="flex flex-col items-center justify-center h-screen text-center p-8"
+            >
+              <ion-icon
+                name="rocket-outline"
+                class="text-6xl lg:text-[10em] mb-4 text-white cursor-pointer"
+              ></ion-icon>
+              <h2
+                class="lg:text-[10em] mb-4 text-white font-['Poppins'] font-extrabold text-5xl"
+              >
+                Ready to Start?
+              </h2>
+              <p class="text-lg mb-6 text-white font-['Montserrat']">
+                Begin calculating your CGPA now and take control of your
+                academic journey.
+              </p>
+              <ion-button expand="block" id="start-btn" class="w-full max-w-xs"
+                >Get Started</ion-button
+              >
+            </div>
           </div>
         </div>
       </ion-content>
     </ion-app>
+
+    <script>
+      let currentSlide = 1;
+      const totalSlides = 4;
+
+      function nextSlide(current) {
+        document.getElementById(`slide${current}`).classList.remove("active");
+        current++;
+        if (current <= totalSlides) {
+          document.getElementById(`slide${current}`).classList.add("active");
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const startButton = document.getElementById("start-btn");
+        startButton.addEventListener("click", function () {
+          window.location.href = "calculator.html";
+        });
+      });
+    </script>
   </body>
 </html>

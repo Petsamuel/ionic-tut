@@ -1,3 +1,5 @@
+
+
 document.getElementById("start-btn").addEventListener("click", function () {
   document.getElementById("welcome-screen").style.display = "none";
   document.getElementById("semester-selection").style.display = "block";
@@ -14,6 +16,29 @@ document
       document.getElementById("course-input").style.display = "block";
     }
   });
+// Navigation buttons
+const navCalculator = document.getElementById("nav-calculator");
+const navHistory = document.getElementById("nav-history");
+const navProfile = document.getElementById("nav-profile");
+
+// Pages
+const calculatorPage = document.getElementById("calculator-page");
+const historyPage = document.getElementById("history-page");
+const profilePage = document.getElementById("profile-page");
+
+navCalculator.addEventListener("click", () => showPage(calculatorPage));
+navHistory.addEventListener("click", () => showPage(historyPage));
+navProfile.addEventListener("click", () => showPage(profilePage));
+
+function showPage(page) {
+  // Hide all pages
+  calculatorPage.style.display = "none";
+  historyPage.style.display = "none";
+  profilePage.style.display = "none";
+
+  // Show the selected page
+  page.style.display = "block";
+}
 
 // Step 3: Generate course input forms dynamically based on the number of semesters
 function createCourseInput(semesterCount) {

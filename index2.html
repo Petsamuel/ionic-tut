@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CGPA Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="h-full">
+    <ion-app>
+        <ion-header translucent>
+            <ion-toolbar>
+                <ion-title>CGPA Calculator</ion-title>
+            </ion-toolbar>
+        </ion-header>
+
+        <ion-content fullscreen class="ion-padding">
+            <!-- Welcome Screen -->
+            <div id="welcome-screen" class="min-h-screen flex items-center justify-center gradient-bg text-white px-4">
+                <div class="text-center">
+                    <h1 class="text-4xl font-bold mb-4">CGPA Calculator</h1>
+                    <p class="text-xl mb-8">Simplify your academic journey with our easy-to-use calculator.</p>
+                    <ion-button id="start-btn" class="text-blue-600 bg-white hover:bg-gray-100 transition duration-300">
+                        Get Started
+                    </ion-button>
+                </div>
+            </div>
+
+            <!-- Calculator Page -->
+            <div id="calculator-page" class="max-w-md mx-auto py-8 px-4" style="display: none;">
+                <!-- Semester Selection -->
+                <div id="semester-selection" class="mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Select Number of Semesters</h2>
+                    <ion-item>
+                        <ion-label position="floating">Semesters</ion-label>
+                        <ion-select id="semester-count" interface="popover">
+                            <ion-select-option value="1">1</ion-select-option>
+                            <ion-select-option value="2">2</ion-select-option>
+                            <ion-select-option value="3">3</ion-select-option>
+                            <ion-select-option value="4">4</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-button id="next-semester-btn" expand="block" class="mt-4">Next</ion-button>
+                </div>
+
+                <!-- Course Input -->
+                <div id="course-input" style="display: none;">
+                    <!-- Dynamically populated by JavaScript -->
+                </div>
+
+                <!-- Result -->
+                <div id="result" class="text-center" style="display: none;">
+                    <h2 class="text-3xl font-bold mb-4">Your CGPA</h2>
+                    <p id="cgpa-result" class="text-5xl font-bold text-blue-600 mb-6"></p>
+                    <ion-button id="recalculate-btn">Recalculate</ion-button>
+                </div>
+            </div>
+
+            <!-- History Page -->
+            <div id="history-page" class="max-w-md mx-auto py-8 px-4" style="display: none;">
+                <h2 class="text-2xl font-semibold mb-4">Calculation History</h2>
+                <p class="text-gray-600">Your past CGPA calculations will appear here.</p>
+                <!-- Add a placeholder for future history items -->
+            </div>
+
+            <!-- Profile Page -->
+            <div id="profile-page" class="max-w-md mx-auto py-8 px-4" style="display: none;">
+                <h2 class="text-2xl font-semibold mb-4">Your Profile</h2>
+                <p class="text-gray-600">Manage your profile settings here.</p>
+                <!-- Add placeholder profile settings -->
+            </div>
+        </ion-content>
+
+        <ion-footer>
+            <ion-toolbar>
+                <ion-segment value="calculator">
+                    <ion-segment-button value="calculator" id="nav-calculator">
+                        <ion-icon name="calculator"></ion-icon>
+                        <ion-label>Calculate</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="history" id="nav-history">
+                        <ion-icon name="time"></ion-icon>
+                        <ion-label>History</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="profile" id="nav-profile">
+                        <ion-icon name="person"></ion-icon>
+                        <ion-label>Profile</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+            </ion-toolbar>
+        </ion-footer>
+    </ion-app>
+
+    <script src="script.js"></script>
+</body>
+</html>
